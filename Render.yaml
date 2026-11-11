@@ -1,0 +1,56 @@
+# Render Blueprint. Keep this file at the ROOT of the repo that holds the backend.
+# If backend and frontend share one repo, move this file to the repo root and uncomment rootDir.
+services:
+  - type: web
+    name: ecommerce-backend
+    runtime: node
+    plan: free
+    # rootDir: ecommerce-backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PAYMENT_ALLOW_MOCK
+        value: "false"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: MONGO_URI
+        sync: false
+      - key: CLIENT_ORIGIN
+        sync: false
+      - key: SERVER_URL
+        sync: false
+      - key: USD_TO_BDT_RATE
+        value: "122"
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: SSLCOMMERZ_STORE_ID
+        sync: false
+      - key: SSLCOMMERZ_STORE_PASSWORD
+        sync: false
+      - key: SSLCOMMERZ_IS_LIVE
+        value: "false"
+      - key: BKASH_APP_KEY
+        sync: false
+      - key: BKASH_APP_SECRET
+        sync: false
+      - key: BKASH_USERNAME
+        sync: false
+      - key: BKASH_PASSWORD
+        sync: false
+      - key: BKASH_IS_LIVE
+        value: "false"
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        value: "465"
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: MAIL_FROM
+        sync: false
